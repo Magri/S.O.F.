@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Previsao Tempo</span> {{vm.previsaoTempo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Link</span></dt>
+        <dd>
+            <span>{{vm.previsaoTempo.link}}</span>
+        </dd>
+        <dt><span>Data Previsao</span></dt>
+        <dd>
+            <span>{{vm.previsaoTempo.dataPrevisao | date:'medium'}}</span>
+        </dd>
+        <dt><span>Produtor</span></dt>
+        <dd>
+            <span ng-repeat="produtor in vm.previsaoTempo.produtors">
+                <a ui-sref="produtor-detail({id: produtor.id})">{{produtor.nome}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Grupo</span></dt>
+        <dd>
+            <span ng-repeat="grupo in vm.previsaoTempo.grupos">
+                <a ui-sref="grupo-detail({id: grupo.id})">{{grupo.descricao}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="previsao-tempo-detail.edit({id:vm.previsaoTempo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

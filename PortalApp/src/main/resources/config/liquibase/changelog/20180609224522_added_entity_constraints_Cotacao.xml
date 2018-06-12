@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Cotacao.
+    -->
+    <changeSet id="20180609224522-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="produto_id"
+                                 baseTableName="cotacao"
+                                 constraintName="fk_cotacao_produto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produto"/>
+
+        <addForeignKeyConstraint baseColumnNames="cotacaos_id"
+                                 baseTableName="cotacao_produtor"
+                                 constraintName="fk_cotacao_produtor_cotacaos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cotacao"/>
+        <addForeignKeyConstraint baseColumnNames="produtors_id"
+                                 baseTableName="cotacao_produtor"
+                                 constraintName="fk_cotacao_produtor_produtors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produtor"/>
+        
+        <addForeignKeyConstraint baseColumnNames="cotacaos_id"
+                                 baseTableName="cotacao_grupo"
+                                 constraintName="fk_cotacao_grupo_cotacaos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cotacao"/>
+        <addForeignKeyConstraint baseColumnNames="grupos_id"
+                                 baseTableName="cotacao_grupo"
+                                 constraintName="fk_cotacao_grupo_grupos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="grupo"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "grupo",
+            "otherEntityName": "grupo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "produtor"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "noticia",
+            "otherEntityName": "noticia",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "produtor"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "previsaoTempo",
+            "otherEntityName": "previsaoTempo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "produtor"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "cotacao",
+            "otherEntityName": "cotacao",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "produtor"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataNascimento",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cpf",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cadpro",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180609224519",
+    "entityTableName": "produtor",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

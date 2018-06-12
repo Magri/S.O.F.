@@ -1,0 +1,62 @@
+<div>
+    <h2>Login Apps</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="login-app.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Login App
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="usuario"><span>Usuario</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="senha"><span>Senha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="produtorId"><span>Produtor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="loginApp in vm.loginApps track by loginApp.id">
+                    <td><a ui-sref="login-app-detail({id:loginApp.id})">{{loginApp.id}}</a></td>
+                    <td>{{loginApp.usuario}}</td>
+                    <td>{{loginApp.senha}}</td>
+                    <td>
+                        <a ui-sref="produtor-detail({id:loginApp.produtorId})">{{loginApp.produtorId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="login-app-detail({id:loginApp.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="login-app.edit({id:loginApp.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="login-app.delete({id:loginApp.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

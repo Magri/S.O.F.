@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Cotacao</span> {{vm.cotacao.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Data Cotacao</span></dt>
+        <dd>
+            <span>{{vm.cotacao.dataCotacao | date:'medium'}}</span>
+        </dd>
+        <dt><span>Preco</span></dt>
+        <dd>
+            <span>{{vm.cotacao.preco}}</span>
+        </dd>
+        <dt><span>Descricao Customizada Produto</span></dt>
+        <dd>
+            <span>{{vm.cotacao.descricaoCustomizadaProduto}}</span>
+        </dd>
+        <dt><span>Produto</span></dt>
+        <dd>
+            <a ui-sref="produto-detail({id:vm.cotacao.produtoId})">{{vm.cotacao.produtoId}}</a>
+        </dd>
+        <dt><span>Produtor</span></dt>
+        <dd>
+            <span ng-repeat="produtor in vm.cotacao.produtors">
+                <a ui-sref="produtor-detail({id: produtor.id})">{{produtor.nome}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Grupo</span></dt>
+        <dd>
+            <span ng-repeat="grupo in vm.cotacao.grupos">
+                <a ui-sref="grupo-detail({id: grupo.id})">{{grupo.descricao}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="cotacao-detail.edit({id:vm.cotacao.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

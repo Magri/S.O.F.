@@ -1,0 +1,64 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "empresa",
+            "otherEntityName": "empresa",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "grupo"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "grupo",
+            "relationshipName": "produtor",
+            "otherEntityName": "produtor",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "noticia",
+            "otherEntityName": "noticia",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "grupo"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "previsaoTempo",
+            "otherEntityName": "previsaoTempo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "grupo"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "cotacao",
+            "otherEntityName": "cotacao",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "grupo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180609224518",
+    "entityTableName": "grupo",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,14 @@
+version: '2'
+services:
+    portalapp-app:
+        image: portalapp
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://portalapp-postgresql:5432/PortalApp
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    portalapp-postgresql:
+        extends:
+            file: postgresql.yml
+            service: portalapp-postgresql

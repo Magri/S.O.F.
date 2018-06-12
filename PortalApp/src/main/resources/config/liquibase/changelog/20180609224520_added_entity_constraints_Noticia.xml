@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Noticia.
+    -->
+    <changeSet id="20180609224520-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="noticias_id"
+                                 baseTableName="noticia_produtor"
+                                 constraintName="fk_noticia_produtor_noticias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="noticia"/>
+        <addForeignKeyConstraint baseColumnNames="produtors_id"
+                                 baseTableName="noticia_produtor"
+                                 constraintName="fk_noticia_produtor_produtors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produtor"/>
+        
+        <addForeignKeyConstraint baseColumnNames="noticias_id"
+                                 baseTableName="noticia_grupo"
+                                 constraintName="fk_noticia_grupo_noticias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="noticia"/>
+        <addForeignKeyConstraint baseColumnNames="grupos_id"
+                                 baseTableName="noticia_grupo"
+                                 constraintName="fk_noticia_grupo_grupos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="grupo"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,93 @@
+entity LoginApp {	
+    usuario String required,
+    senha String required
+}
+
+entity Empresa {
+    codigo Long required,
+    descricao String required
+}
+
+entity Grupo {
+    codigo Long required,
+    descricao String required
+}
+
+entity Produtor {
+    nome String required,
+    email String required,
+    dataNascimento Instant required, 
+    cpf String required, 
+    cadpro String required
+}
+
+entity Noticia {
+    link String required,
+    texto String required,
+    dataPublicacao Instant required
+}
+
+entity PrevisaoTempo {
+    link String required, 
+    dataPrevisao Instant required
+}
+
+entity Cotacao {
+    dataCotacao Instant required,
+    preco Long required,
+	descricaoCustomizadaProduto String required
+}
+
+entity Produto {
+    unidadeComercial String required, 
+    descricao String required,
+	origem Origem
+}
+
+enum Origem {
+    ANIMAL, VEGETAL
+}
+
+relationship OneToOne {
+    LoginApp{produtor} to Produtor,
+    Grupo{empresa} to Empresa,
+    Cotacao{produto} to Produto
+}
+
+enum Origem {
+    ANIMAL, VEGETAL
+}	
+
+relationship ManyToMany {
+	Grupo{produtor(nome)} to Produtor{grupo}
+}
+
+relationship ManyToMany {
+	Noticia{produtor(nome)} to Produtor{noticia}   
+}
+
+relationship ManyToMany {
+	Noticia{grupo(descricao)} to Grupo{noticia}
+}
+
+relationship ManyToMany {
+	PrevisaoTempo{produtor(nome)} to Produtor{previsaoTempo}   
+}
+
+relationship ManyToMany {
+	PrevisaoTempo{grupo(descricao)} to Grupo{previsaoTempo}
+}
+
+relationship ManyToMany {
+	Cotacao{produtor(nome)} to Produtor{cotacao}   
+}
+
+relationship ManyToMany {
+	Cotacao{grupo(descricao)} to Grupo{cotacao}
+}
+
+paginate LoginApp, Empresa, Grupo, PrevisaoTempo, Produto, Produtor, Noticia, Cotacao with infinite-scroll
+
+dto * with mapstruct
+
+service all with serviceImpl

@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "produto",
+            "otherEntityName": "produto",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "cotacao"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "cotacao",
+            "relationshipName": "produtor",
+            "otherEntityName": "produtor",
+            "otherEntityField": "nome",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "cotacao",
+            "relationshipName": "grupo",
+            "otherEntityName": "grupo",
+            "otherEntityField": "descricao",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dataCotacao",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "preco",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "descricaoCustomizadaProduto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180609224522",
+    "entityTableName": "cotacao",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}
